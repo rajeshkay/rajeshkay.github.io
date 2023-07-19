@@ -1,4 +1,4 @@
-Age,Age Group,Age Group Filter,Age Group FLTR,Bmi,BMI Levels,Ever Married,Gender,Gender FLTR,Heart Disease,Heart Disease and HT,Hypertension,Id,Residence type,Smoking Status,Smoking Status Verbose,Stroke,Work Type,Avg Glucose Level,Smoking Status Count
+Age,AgeGroup,AgeGroupFilter,AgeGroupFLTR,Bmi,BMILevels,EverMarried,Gender,GenderFLTR,HeartDisease,HeartDiseaseHT,Hypertension,Id,ResidenceType,SmokingStatus,SmokingStatusVerbose,Stroke,WorkType,AvgGlucoseLevel,SmokingStatusCount
 67,60,60-69,60,36.6,Obese,Yes,Male,Male,1,Only Heart Disease,0,9046,Urban,formerly smoked,Smoker,1,Private,228.69,1
 61,60,60-69,60,,Obese,Yes,Female,Female,0,No Hypertension & Heart disease,0,51676,Rural,never smoked,Non-Smoker,1,Self-employed,202.21,0
 80,80,70-79,80,32.5,Obese,Yes,Male,Male,1,Only Heart Disease,0,31112,Rural,never smoked,Non-Smoker,1,Private,105.92,0
