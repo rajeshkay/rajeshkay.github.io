@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
-	<title>Age vs Avg Glucose Level and BMI</title>
+<h1>Common Causes of Stroke </h1>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <body onload='init()'>
+<div class="svg-cont">
+<h2>This is an svg-cntainer</h2>
+<h3> </h3>
 <svg width=500 height=500>
 </svg>
+</div>
+<button></button>
 <script>
 
 async function init() {
@@ -15,6 +20,10 @@ var height = d3.select("svg").attr("height");
 var width = d3.select("svg").attr("width");
 var glucTickVals = [50,100, 150, 200, 250]
 var ageTickVals = [30, 40, 50, 60, 70, 80]
+
+
+d3.select("h3")
+	.text("Age vs Avg Glucose Level and BMI")
 
 var data1 = await d3.csv("https://flunky.github.io/cars2017.csv");
 //console.log(data1[0].Make)
@@ -75,8 +84,10 @@ d3.select("svg")
 	.attr("transform", "translate("+margin+","+(height - margin)+")")
 	.call(xAxis);
 
-d3.select("body")
-	.append("button")
+//d3.select("svg")
+//	.append("button")
+
+d3.select("button")
 	.text("next")
 	.on("click", function() {
 		clean();
@@ -160,25 +171,30 @@ d3.select("svg")
 	.attr("transform", "translate("+margin+","+(height - margin)+")")
 	.call(xAxis);
 
-d3.select("body")
-	.append("button")
+//d3.select("svg")
+//	.append("button")
+
+d3.select("button")
 	.text("prev")
 	.on("click", function() {
 		clean();
 		init();
 	});
 
+d3.select("h3")
+	.text("NEXT: Age vs Avg Glucose Level and BMI")
 }
 
 async function clean() {
 
-d3.select("body").selectAll("*").remove();
+d3.select("svg").selectAll("*").remove();
 
 var height = 500;
 var width = 500;
 
-d3.select("body")
-  .append("svg")
+//d3.select("div")
+//  .append("svg")
+d3.select("svg")
   .attr("width", width)
   .attr("height", height);
 
