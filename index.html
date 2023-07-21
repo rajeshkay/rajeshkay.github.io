@@ -1,15 +1,72 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Common Causes of Stroke</title>
-  <script>
-    // Automatically navigate to another page
-    window.location.href = "main.html";
-  </script>
+    <meta charset="UTF-8">
+    <title>Common Causes of Stroke</title>
+    <style>
+        .tooltip {
+          position: absolute;
+          padding: 8px;
+          background-color: rgba(0, 0, 0, 0.8);
+          color: #fff;
+          font-size: 12px;
+          pointer-events: none;
+          visibility: hidden;
+        }
+    </style>
 </head>
-<body>
-  <h1>Welcome to the Index Page</h1>
-  <!-- Content of the index page -->
+
+<body onload='chart1()'>
+<header>
+    <h1 style="color: brown;"><center>Common Causes of Stroke</center></color></h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="sec1">
+        <div class="div1">
+            <h3><center></center></h3>
+            <p></p>
+            <svg class="svg1"><center></center> </svg>
+        </div>
+        <button class="one" onclick='chart1()'>1</button>
+        <button class="two" onclick='chart2()'>2</button>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+</main>
+</script>
+<footer>
+    <p style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10px">
+         <font color="blue">This webpage may have factual deficiencies. 
+           It was created for the purpose of understanding narrative visualization.</font>
+           Dataset is sourced from 
+         <a href="https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset">www.kaggle.com
+         </a>
+    </p> 
+</footer>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src='utils.js'></script>
+<script src='chart1_bar.js'></script>
+<script src='chart2_scatter.js'></script>
 </body>
 </html>
