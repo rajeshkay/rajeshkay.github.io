@@ -12,12 +12,7 @@ async function chart2() {
 
     d3.select("main")
         .select(".svg1h3")
-	.text("Age vs Avg Glucose Level");
-
-/* TBD-KR
-    div1.select("p")
-	.text("Size of the Mark indicates BMI");
-*/
+	.text("Age and Blood Glucose Level");
 
     var data = await d3.csv("https://rajeshkay.github.io/data/stroke-data.csv");
 
@@ -68,4 +63,23 @@ async function chart2() {
 	.append("g")
 	.attr("transform", "translate("+MARGIN+","+(height - MARGIN)+")")
 	.call(xAxis);
+
+    // Axis title names
+    svg1 = d3.select(".svg1");
+
+    svg1.append("text")
+      .attr("class", "x-axis-title")
+      .attr("x", width / 2)
+      .attr("y", height - 10)
+      .attr("text-anchor", "middle")
+      .text("Blood Glucose Level");
+
+    svg1.append("text")
+      .attr("class", "y-axis-title")
+      .attr("x", -height / 2)
+      .attr("y", MARGIN - 30)
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-90)")
+      .text("Age at the time of Stroke");
+
 }
