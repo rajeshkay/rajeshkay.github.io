@@ -15,6 +15,9 @@ var windowHeight = window.innerHeight;
 
 var BAR_SPACE = 20;
 
+
+
+
 function svg_init() {
     var height = 600;
     var width = 600;
