@@ -1,4 +1,4 @@
-async function chart2() {
+async function chart1() {
     svg_clean();
     svg_init();
 
@@ -110,7 +110,8 @@ async function chart2() {
     d3.select(".svg1")
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
-        .style("stroke-width", "2px")
+        .style("stroke-width", AXIS_LNE_SZE)
+        .style("fill", AXIS_LNE_COL)
         .call(yAxis)
         .selectAll("text")
         .style("font-weight", "bold");
@@ -118,7 +119,8 @@ async function chart2() {
     d3.select(".svg1")
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(height - MARGIN)+ ")" )
-        .style("stroke-width", "2px")
+        .style("stroke-width", AXIS_LNE_SZE)
+        .style("fill", AXIS_LNE_COL)
         .call(xAxis)
         .selectAll("text")
         .style("font-weight", "bold");
@@ -129,7 +131,10 @@ async function chart2() {
       .attr("x", width / 2)
       .attr("y", height - 10)
       .attr("text-anchor", "middle")
-      .text("Age Groups");
+      .text("Age Groups")
+      .style("fill", AXIS_FONT_COL)
+      .style("font-family", AXIS_FONT_FMLY)
+      .style("font-size", AXIS_FONT_SZE);
 
     svg1.append("text")
       .attr("class", "y-axis-title")
@@ -137,7 +142,10 @@ async function chart2() {
       .attr("y", MARGIN - 30)
       .attr("text-anchor", "middle")
       .attr("transform", "rotate(-90)")
-      .text("Number of Stroke Patients");
+      .text("Number of Stroke Patients")
+      .style("fill", AXIS_FONT_COL)
+      .style("font-family", AXIS_FONT_FMLY)
+      .style("font-size", AXIS_FONT_SZE);
 
     svg1 = d3.select(".svg1")
         .append("g")
@@ -184,3 +192,5 @@ function trial(event, d, gender) {
     var classStr = "." + gender + d.age;
     return d3.select(classStr).append("title").text(tooltip);
 }
+
+chart1();

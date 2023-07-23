@@ -39,7 +39,7 @@ function plot_chart(data) {
     add_legend();
 }
 
-async function chart1() {
+async function chart2() {
     svg_clean();
     svg_init();
 
@@ -82,7 +82,8 @@ async function chart1() {
     d3.select(C2_SVG_MN)
 	.append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(2*MARGIN)+ ")")
-        .style("stroke-width", "2px")
+        .style("stroke-width", AXIS_LNE_SZE)
+        .style("fill", AXIS_LNE_COL)
 	.call(yAxis)
         .selectAll("text")
         .style("font-weight", "bold");
@@ -90,7 +91,8 @@ async function chart1() {
     d3.select(C2_SVG_MN)
 	.append("g")
 	.attr("transform", "translate("+MARGIN+","+(height - MARGIN)+")")
-        .style("stroke-width", "2px")
+        .style("stroke-width", AXIS_LNE_SZE)
+        .style("fill", AXIS_LNE_COL)
 	.call(xAxis)
         .selectAll("text")
         .style("font-weight", "bold");
@@ -104,7 +106,10 @@ async function chart1() {
       .attr("x", width / 2)
       .attr("y", height - 10)
       .attr("text-anchor", "middle")
-      .text("Blood Glucose Level");
+      .text("Blood Glucose Level")
+      .style("fill", AXIS_FONT_COL)
+      .style("font-family", AXIS_FONT_FMLY)
+      .style("font-size", AXIS_FONT_SZE);
 
     svg1.append("text")
       .attr("class", "y-axis-title")
@@ -112,7 +117,10 @@ async function chart1() {
       .attr("y", MARGIN - 30)
       .attr("text-anchor", "middle")
       .attr("transform", "rotate(-90)")
-      .text("Age at the time of Stroke");
+      .text("Age at the time of Stroke")
+      .style("fill", AXIS_FONT_COL)
+      .style("font-family", AXIS_FONT_FMLY)
+      .style("font-size", AXIS_FONT_SZE);
 
 }
 
@@ -201,7 +209,7 @@ function add_legend(){
       .attr("cx", (d, i) => i * 120)
       .attr("r", d => d)
       .attr("fill", "steelblue")
-      .on("click", legendClick);
+      .on("click", legend_click);
 
     sizeLegend.selectAll("text")
       .data(bmiText)
@@ -215,7 +223,7 @@ function add_legend(){
       .style("font-size", "12px")
       .style("color", "blue")
       .text(d => d)
-      .on("click", legendClick);
+      .on("click", legend_click);
 
     var textObj = d3.select(C2_SVG_MN).append("foreignObject")
          .attr("width", 120)
@@ -229,11 +237,11 @@ function add_legend(){
         .style("font-size", "12px")
         .style("font-weight", "bold")
         .style("color", filterTxtCol)
-        .on("click", legendClick);
+        .on("click", legend_click);
 
 }
 
-function legendClick() {
+function legend_click() {
 
     if (this.textContent == "Clear BMI Selection") {
         slxnFlag &= RST_BMI;
@@ -324,9 +332,11 @@ function add_clear() {
         .style("font-size", "12px")
         .style("font-weight", "bold")
         .style("color", clrTxtCol)
-        .on("click", legendClick);
+        .on("click", legend_click);
 }
 
 function rem_clear() {
     d3.selectAll(".bmiClrText").remove();
 }
+
+chart2();
