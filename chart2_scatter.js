@@ -46,7 +46,7 @@ async function chart2() {
 
     d3.select(C2_DIV_ID)
         .select(C2_SVG_H3_ID)
-	.text("Age and Blood Glucose Level");
+	.text("Blood Glucose Level & Obesity vs Age and Gender");
 
     dataset = await d3.csv("https://rajeshkay.github.io/data/stroke-data.csv");
 

@@ -370,7 +370,7 @@ async function chart3() {
 
     d3.select(C3_DIV_ID)
         .select(C3_SVG_H3_ID)
-	.text("Age, Gender and Smoking Status");
+	.text("Other Factors categorized by Age and Gender");
 
     var age = data.map(function(d) {
 	return parseInt(d.age); });

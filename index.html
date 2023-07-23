@@ -4,25 +4,149 @@
     <meta charset="UTF-8">
     <title>Common Causes of Stroke</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <style>
+    .known_factors {
+      display: flex;
+      align-items: center;
+    }
+
+    .known_factors {
+      width: 400px; /* Set the desired width of the image */
+      height: 400px;
+      margin-right: 20px; /* Add some spacing between the image and text */
+    }
+  </style>
 </head>
 
-<body>
+<body style="font-family: Arial, sans-serif; font-size: 12px; color: #800000;">
+    <h1><center>Brain Stroke</center></span></h1>
+
+    <div class="summary">
+         <h3>Summary</h3>
+         <p>
+            This page is intended to give an overview about Stroke. It also provides a brief
+            summary of the various known risk factors that can induce a stroke. More importantly,
+            <u> this page offers the viewers an opportunity to visualize and better understand the
+            statistical distribution of the various factors of stroke among a small subset of victims
+            belonging to different age groups</u>.
+         </p>
+         <p>&nbsp;</p>
+    </div>
+
+    <div class="introduction">
+         <h2><i>What is Stroke?</i></h2>
+         <p>
+            The brain controls our movements, stores our memories, and is the source of our 
+            thoughts, emotions, and language. The brain also controls many functions of the 
+            body, like breathing and digestion.
+         </p>
+
+         <p>
+            To work properly, your brain needs oxygen. Your arteries deliver oxygen-rich blood 
+            to all parts of your brain. When something blocks blood supply to part of the brain 
+            or when a blood vessel bursts and that part of brain gets damaged, brain cells in 
+            that region start to die within minutes, because they can’t get oxygen. This causes 
+            a stroke. A stroke can cause long-term disability, or even death.
+         </p>
+
+         <p>
+            Strokes are a life-threatening emergency, and immediate medical attention is 
+            critical. The following webpages can provide a good start in better understanding 
+            of Stroke.
+         </p>
+            <ul>
+               <li><a href="https://www.cdc.gov/stroke/about.htm">
+                        CDC - <i>Stroke Home </i>
+                   </a></li>
+
+               <li><a href="https://www.dukehealth.org/blog/know-signs-of-stroke-be-fast">
+                        Signs of Stroke
+                   </a></li>
+
+               <li><a href="https://health.gov/myhealthfinder/health-conditions/heart-health/reduce-your-risk-stroke">
+                        Reducing the Risk of Stroke
+                   </a></li>
+            </ul>
+
+         </p>
+
+         <p><b>
+            While the above webpages offer significant information about stroke, signs of 
+            stroke, etc., one MUST always consult a doctor when in doubt.
+         </b></p>
+    </div>
+
+   <div class="factors">
+         <h2><i>Risk Factors</i></h2>
+         <p>
+            According to the World Health Organization (WHO) stroke is the 2nd leading cause
+            of death globally, responsible for approximately 11% of total deaths. Over the years, 
+            several factors have been suspected to induce Stroke.
+         </p>
+   </div>
+
+   <div class="known_factors">
+        <img src="data/known_factors.jpeg" alt="known_factors" class="known_factors">
+           <p>&nbsp;</p>
+   </div>
+
+   <div class="visual_intro">
+         <h2><i>Common Factors</i></h2>
+         <p>
+            In the previous section, most prominent risk factors of stroke was listed. This 
+            is a very generalized and well known information. Are there any additional factors 
+            that can influence stroke? 
+
+            The lifetime risk of stroke is higher for women than men, with a 1 in 4 risk of 
+            stroke for women after age 25. Can gender be a factor or can age be a factor? 
+         </p>
+
+         <p>
+            In this section we will explore the influence of some of the well known factors 
+            as well as some factors that are not listed above. 
+            For the purpose of this study, a small dataset of about 250 stroke victims is chosen. 
+
+         <ul>
+             <li>Age <i>(factor not listed above)</i></li>
+             <li>Gender <i>(factor not listed above)</i></li>
+             <li>High blood pressure</li>
+             <li>Obesity</li>
+             <li>Heart Disease</li>
+             <li>Smoking</li>
+         </ul>
+         </p>
+         <p>
+            In the visualizations that follow, one can explore the direct impact of these
+            <i>new</i> factors and also visualize the influence of other known factors when 
+            the dataset is categorized based on Age and Gender.
+         </p>
+   </div>
+
+
+
+
+
+
     <div id="chart1" class="chart1">
          <h3 class="c1h3" id="c1h3"><center></center></h3>
          <p>svg1</p>
          <svg class="c1svg1" id="c1svg1" width="600" height="600"><center></center> </svg>
+         <p>&nbsp;</p>
     </div>
 
     <div id="chart2" class="chart2">
          <h3 class="c2h3" id="c2h3"><center></center></h3>
          <p>svg2</p>
          <svg class="c2svg1" id="c2svg1" width="600" height="600"><center></center> </svg>
+         <p>&nbsp;</p>
     </div>
 
     <div id="chart3" class="chart3">
          <h3 class="c3h3" id="c3h3"><center></center></h3>
          <p>svg3</p>
          <svg class="c3svg1" id="c3svg1" width="600" height="600"><center></center> </svg>
+         <p>&nbsp;</p>
     </div>
 
     <script src='chart1_bar.js'></script>
