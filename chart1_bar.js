@@ -5,8 +5,6 @@ async function chart1() {
     var height = svg1.attr("height");
     var width = svg1.attr("width");
 
-    console.log(height);
-
     var ageTickVals = [30, 40, 50, 60, 70, 80];
     var ageTickValsAxis = ["30-40", "40-50", "50-60", "60-70", "70-80", "80-90"];
 
@@ -90,7 +88,7 @@ async function chart1() {
 
     d3.select(C1_DIV_ID)
         .select(C1_SVG_H3_ID)
-	.text("Age and Gender");
+	.text("NEW Factors: Age and Gender");
 
     var age = data.map(function(d) {
 	return parseInt(d.age); });
