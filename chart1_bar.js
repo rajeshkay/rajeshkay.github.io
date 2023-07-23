@@ -1,4 +1,4 @@
-async function chart1() {
+async function chart2() {
     svg_clean();
     svg_init();
 
@@ -110,12 +110,18 @@ async function chart1() {
     d3.select(".svg1")
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
-        .call(yAxis);
+        .style("stroke-width", "2px")
+        .call(yAxis)
+        .selectAll("text")
+        .style("font-weight", "bold");
 
     d3.select(".svg1")
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(height - MARGIN)+ ")" )
-        .call(xAxis);
+        .style("stroke-width", "2px")
+        .call(xAxis)
+        .selectAll("text")
+        .style("font-weight", "bold");
 
 // Axis title names
     svg1.append("text")

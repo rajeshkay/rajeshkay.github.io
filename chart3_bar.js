@@ -196,7 +196,9 @@ async function chart3() {
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
 	.style("stroke-width", "2px")
-        .call(yAxis);
+        .call(yAxis)
+        .selectAll("text") 
+        .style("font-weight", "bold"); 
 
     d3.select(".svg1")
         .append("g")
