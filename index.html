@@ -3,58 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Common Causes of Stroke</title>
-    <style>
-        .tooltip {
-          position: absolute;
-          padding: 8px;
-          background-color: rgba(0, 0, 0, 0.8);
-          color: #fff;
-          font-size: 12px;
-          pointer-events: none;
-          visibility: hidden;
-        }
-    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 
-<body onload='chart1()'>
-<header>
-    <h1 style="color: brown;"><center>Common Causes of Stroke</center></color></h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-</header>
+<body>
+    <div id="chart1" class="chart1">
+         <h3 class="c1h3" id="c1h3"><center></center></h3>
+         <p>svg1</p>
+         <svg class="c1svg1" id="c1svg1" width="600" height="600"><center></center> </svg>
+    </div>
 
-<main>
-    <section class="sec1">
-        <div class="div1">
-            <h3 class="svg1h3" id="svg1h3"><center></center></h3>
-            <p></p>
-            <svg class="svg1"><center></center> </svg>
-        </div>
-        <button class="one" onclick='chart1()'>1</button>
-        <button class="two" onclick='chart2()'>2</button>
-        <button class="three" onclick='chart3()'>3</button>
-    </section>
+    <div id="chart2" class="chart2">
+         <h3 class="c2h3" id="c2h3"><center></center></h3>
+         <p>svg2</p>
+         <svg class="c2svg1" id="c2svg1" width="600" height="600"><center></center> </svg>
+    </div>
 
-    <section>
-      <h2>Contact</h2>
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <input type="submit" value="Submit">
-      </form>
-    </section>
-</main>
-</script>
+    <div id="chart3" class="chart3">
+         <h3 class="c3h3" id="c3h3"><center></center></h3>
+         <p>svg3</p>
+         <svg class="c3svg1" id="c3svg1" width="600" height="600"><center></center> </svg>
+    </div>
+
+    <script src='chart1_bar.js'></script>
+    <script src='chart2_scatter.js'></script>
+    <script src='chart3_bar.js'></script>
+    <script src='utils.js'></script>
+
+</body>
+
 <footer>
     <p style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10px">
          <font color="blue">This webpage may have factual deficiencies. 
@@ -64,11 +41,4 @@
          </a>
     </p> 
 </footer>
-
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script src='utils.js'></script>
-<script src='chart1_bar.js'></script>
-<script src='chart2_scatter.js'></script>
-<script src='chart3_bar.js'></script>
-</body>
 </html>

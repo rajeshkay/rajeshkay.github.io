@@ -342,11 +342,8 @@ function mse_evt_smoke(event, d, gender) {
 }
 
 async function chart3() {
-    svg_clean();
-    svg_init();
-
-    svg_init();
-    svg1 = d3.select(C3_SVG_MN);
+    svg_clean(C3_DIV_ID, C3_SVG_ID);
+    svg1 = d3.select(C3_SVG_ID);
 
     height = svg1.attr("height");
     width = svg1.attr("width");
@@ -371,8 +368,8 @@ async function chart3() {
         }
     }
 
-    d3.select("main")
-        .select(C3_SVG_HDR)
+    d3.select(C3_DIV_ID)
+        .select(C3_SVG_H3_ID)
 	.text("Age, Gender and Smoking Status");
 
     var age = data.map(function(d) {
@@ -392,7 +389,7 @@ async function chart3() {
     yAxis = d3.axisLeft().scale(scaleY)
                    .tickFormat(function (d,i) { return yLabels[i] });
 
-    svg1 = d3.select(C3_SVG_MN)
+    svg1 = d3.select(C3_SVG_ID)
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
 
@@ -436,7 +433,7 @@ async function chart3() {
 }
 
 function draw_axis(xAxis, yAxis) {
-    d3.select(C3_SVG_MN)
+    d3.select(C3_SVG_ID)
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
 	.style("stroke-width", AXIS_LNE_SZE)
@@ -445,7 +442,7 @@ function draw_axis(xAxis, yAxis) {
         .selectAll("text") 
         .style("font-weight", "bold"); 
 
-    d3.select(C3_SVG_MN)
+    d3.select(C3_SVG_ID)
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(height/2)+ ")" )
 	.style("stroke-width", AXIS_LNE_SZE)
@@ -454,7 +451,7 @@ function draw_axis(xAxis, yAxis) {
         .selectAll("text") 
         .style("font-weight", "bold"); 
 
-    d3.select(C3_SVG_MN)
+    d3.select(C3_SVG_ID)
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(height - MARGIN)+ ")" )
         .style("stroke-width", "0.2px")
@@ -487,7 +484,7 @@ function draw_axis(xAxis, yAxis) {
 
 function draw_factors() {
 
-    var sizeLegend = d3.select(C3_SVG_MN).append("g")
+    var sizeLegend = d3.select(C3_SVG_ID).append("g")
                         .attr("transform", "translate(" +(2*MARGIN+40)+ ",20)");
     
     
@@ -504,7 +501,7 @@ function draw_factors() {
       .text(d => d)
       .on("click", feature_click);
 
-    var textObj = d3.select(C3_SVG_MN).append("foreignObject")
+    var textObj = d3.select(C3_SVG_ID).append("foreignObject")
          .attr("width", 120)
          .attr("height", 50)
          .attr("x", 5)
@@ -519,7 +516,7 @@ function draw_factors() {
         .on("click", feature_click);
 
 
-    var textObj2 = d3.select(C3_SVG_MN).append("foreignObject")
+    var textObj2 = d3.select(C3_SVG_ID).append("foreignObject")
          .attr("width", 150)
          .attr("height",100)
          .attr("x", 80)
@@ -535,7 +532,7 @@ function draw_factors() {
 
 function stacked_bar(layNum=1, stackedData, stDatacolor, shift){
 
-    svg = d3.select(C3_SVG_MN)
+    svg = d3.select(C3_SVG_ID)
 
     var layerCls = "layer" + layNum;
 
@@ -648,4 +645,3 @@ function plot_ht() {
 
 }
 
-chart3();

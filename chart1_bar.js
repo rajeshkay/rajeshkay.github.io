@@ -1,12 +1,11 @@
 async function chart1() {
-    svg_clean();
-    svg_init();
-
-    svg_init();
-    svg1 = d3.select(".svg1");
+    svg_clean(C1_DIV_ID, C1_SVG_ID);
+    svg1 = d3.select(C1_DIV_ID).select(C1_SVG_ID);
 
     var height = svg1.attr("height");
     var width = svg1.attr("width");
+
+    console.log(height);
 
     var ageTickVals = [30, 40, 50, 60, 70, 80];
     var ageTickValsAxis = ["30-40", "40-50", "50-60", "60-70", "70-80", "80-90"];
@@ -89,8 +88,8 @@ async function chart1() {
 	}
     }
 
-    d3.select("main")
-        .select(".svg1h3")
+    d3.select(C1_DIV_ID)
+        .select(C1_SVG_H3_ID)
 	.text("Age and Gender");
 
     var age = data.map(function(d) {
@@ -107,7 +106,7 @@ async function chart1() {
     var xAxis = d3.axisBottom().scale(scaleX);
     var yAxis = d3.axisLeft().scale(scaleY);
 
-    d3.select(".svg1")
+    d3.select(C1_SVG_ID)
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
         .style("stroke-width", AXIS_LNE_SZE)
@@ -116,7 +115,7 @@ async function chart1() {
         .selectAll("text")
         .style("font-weight", "bold");
 
-    d3.select(".svg1")
+    d3.select(C1_SVG_ID)
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(height - MARGIN)+ ")" )
         .style("stroke-width", AXIS_LNE_SZE)
@@ -126,7 +125,8 @@ async function chart1() {
         .style("font-weight", "bold");
 
 // Axis title names
-    svg1.append("text")
+    
+    d3.select(C1_SVG_ID).append("text")
       .attr("class", "x-axis-title")
       .attr("x", width / 2)
       .attr("y", height - 10)
@@ -136,7 +136,7 @@ async function chart1() {
       .style("font-family", AXIS_FONT_FMLY)
       .style("font-size", AXIS_FONT_SZE);
 
-    svg1.append("text")
+    d3.select(C1_SVG_ID).append("text")
       .attr("class", "y-axis-title")
       .attr("x", -height / 2)
       .attr("y", MARGIN - 30)
@@ -147,7 +147,7 @@ async function chart1() {
       .style("font-family", AXIS_FONT_FMLY)
       .style("font-size", AXIS_FONT_SZE);
 
-    svg1 = d3.select(".svg1")
+    svg1 = d3.select(C1_SVG_ID)
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
 
@@ -168,8 +168,8 @@ async function chart1() {
         .attr("y", function(d,i) { return scaleY(d.count) })
         .attr("height", function(d,i) { return (scaleY(0) - scaleY(d.count)) })
         .attr("fill", function(d,i) { return gender_col("Female") })
-        .on("mouseenter", function(d,i) { return trial(d, i, "Female") })
-        .on("mouseover", function(d,i) { return trial(d, i, "Female") });
+        .on("mouseenter", function(d,i) { return mouse_over(d, i, "Female") })
+        .on("mouseover", function(d,i) { return mouse_over(d, i, "Female") });
 
     svg1.selectAll(".male")
         .data(aggDataMale)
@@ -181,16 +181,14 @@ async function chart1() {
         .attr("y", function(d,i) { return scaleY(d.count) })
         .attr("height", function(d,i) { return (scaleY(0) - scaleY(d.count)) })
         .attr("fill", function(d,i) { return gender_col("Male") })
-        .on("mouseover", function(d,i) { return trial(d, i, "Male") })
-        .on("mouseenter", function(d,i) { return trial(d, i, "Male") });
+        .on("mouseover", function(d,i) { return mouse_over(d, i, "Male") })
+        .on("mouseenter", function(d,i) { return mouse_over(d, i, "Male") });
 }
 
-function trial(event, d, gender) {
+function mouse_over(event, d, gender) {
     var tooltip = "Affected Count \n# " + gender + "s: "+ d.count + 
                   "\n# Total: " + d.total +
                   "\n# Percentage: " + Math.round((d.count/d.total)*100) + "%";
     var classStr = "." + gender + d.age;
     return d3.select(classStr).append("title").text(tooltip);
 }
-
-chart1();

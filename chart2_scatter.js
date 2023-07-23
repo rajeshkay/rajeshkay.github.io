@@ -13,16 +13,14 @@ var filterTxtCol = "brown";
 var clrTxtCol = "red";
 var butnTxtCol = "white";
 
-var chart2S
-
 function plot_chart(data) {
-    var svg1 = d3.select(C2_SVG_MN);
+    var svg1 = d3.select(C2_SVG_ID);
 
     svg1.selectAll("circle").remove();
     svg1.selectAll(".bmiText").remove();
     svg1.selectAll(".bmiClkText").remove();
 
-    svg1 = d3.select(C2_SVG_MN)
+    svg1 = d3.select(C2_SVG_ID)
              .append("g")
              .attr("transform", "translate(" +MARGIN+ "," +(2*MARGIN)+ ")")
 
@@ -40,15 +38,14 @@ function plot_chart(data) {
 }
 
 async function chart2() {
-    svg_clean();
-    svg_init();
+    svg_clean(C2_DIV_ID, C2_SVG_ID);
 
-    svg1 = d3.select(C2_SVG_MN);
+    svg1 = d3.select(C2_SVG_ID);
     height = svg1.attr("height");
     width =  svg1.attr("width");
 
-    d3.select("main")
-        .select(C2_SVG_HDR)
+    d3.select(C2_DIV_ID)
+        .select(C2_SVG_H3_ID)
 	.text("Age and Blood Glucose Level");
 
     dataset = await d3.csv("https://rajeshkay.github.io/data/stroke-data.csv");
@@ -79,7 +76,7 @@ async function chart2() {
     slxnFlag = 0;
     handleBothClick();
 
-    d3.select(C2_SVG_MN)
+    d3.select(C2_SVG_ID)
 	.append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(2*MARGIN)+ ")")
         .style("stroke-width", AXIS_LNE_SZE)
@@ -88,7 +85,7 @@ async function chart2() {
         .selectAll("text")
         .style("font-weight", "bold");
 
-    d3.select(C2_SVG_MN)
+    d3.select(C2_SVG_ID)
 	.append("g")
 	.attr("transform", "translate("+MARGIN+","+(height - MARGIN)+")")
         .style("stroke-width", AXIS_LNE_SZE)
@@ -99,7 +96,7 @@ async function chart2() {
 
 
     // Axis title names
-    svg1 = d3.select(C2_SVG_MN);
+    svg1 = d3.select(C2_SVG_ID);
 
     svg1.append("text")
       .attr("class", "x-axis-title")
@@ -156,7 +153,7 @@ function handleBothClick() {
 
 function add_button(buttonText, onclick, x, y, col) {
 
-    svg1 = d3.select(C2_SVG_MN)
+    svg1 = d3.select(C2_SVG_ID)
              .append("g")
              .attr("transform", "translate(" +(MARGIN+10)+ "," +(2*MARGIN)+ ")")
 
@@ -193,7 +190,7 @@ function add_button(buttonText, onclick, x, y, col) {
 
 function add_legend(){
 
-    var sizeLegend = d3.select(C2_SVG_MN).append("g")
+    var sizeLegend = d3.select(C2_SVG_ID).append("g")
                         .attr("transform", "translate(" +(2*MARGIN+10)+ ",20)");
 
     var sizeValues = [SZE_vSMALL, SZE_SMALL, SZE_MED, SZE_LARGE]; 
@@ -225,7 +222,7 @@ function add_legend(){
       .text(d => d)
       .on("click", legend_click);
 
-    var textObj = d3.select(C2_SVG_MN).append("foreignObject")
+    var textObj = d3.select(C2_SVG_ID).append("foreignObject")
          .attr("width", 120)
          .attr("height", 30)
          .attr("x", 5)
@@ -320,7 +317,7 @@ function filter_data() {
 }
 
 function add_clear() {
-    var textObj = d3.select(C2_SVG_MN).append("foreignObject")
+    var textObj = d3.select(C2_SVG_ID).append("foreignObject")
          .attr("width", 120)
          .attr("height", 30)
          .attr("x", 5)
@@ -339,4 +336,3 @@ function rem_clear() {
     d3.selectAll(".bmiClrText").remove();
 }
 
-chart2();

@@ -41,47 +41,65 @@ var windowHeight = window.innerHeight;
 
 var BAR_SPACE = 20;
 
-var C1_SVG_MN = ".svg1";
-var C1_SVG_HDR = ".svg1h3";
+var DFLT_SVG_WID = 600
+var DFLT_SVG_HT = 600
 
-var C2_SVG_MN = ".svg1";
-var C2_SVG_HDR = ".svg1h3";
+var C1_DIV_ID = "#chart1";
+var C1_SVG_CL = "c1svg1";
+var C1_SVG_ID = "#c1svg1";
+var C1_SVG_H3 = "c1h3";
+var C1_SVG_H3_ID = "#c1h3";
 
-var C3_SVG_MN = ".svg1";
-var C3_SVG_HDR = ".svg1h3";
+var C2_DIV_ID = "#chart2";
+var C2_SVG_CL = "c2svg1";
+var C2_SVG_ID = "#c2svg1";
+var C2_SVG_H3 = "c2h3";
+var C2_SVG_H3_ID = "#c2h3";
 
+var C3_DIV_ID = "#chart3";
+var C3_SVG_CL = "c3svg1";
+var C3_SVG_ID = "#c3svg1";
+var C3_SVG_H3 = "c3h3";
+var C3_SVG_H3_ID = "#c3h3";
+
+function create_svgs(div, svg, svghdr) {
+
+    d3.select(div)
+        .append(svghdr)
+        .attr("class", svghdr)
+        .attr("id", svghdr)
+
+    d3.select(div)
+        .append("svg")
+        .attr("class", svg)
+        .attr("id", svg)
+        .attr("width", DFLT_SVG_WID)
+        .attr("height", DFLT_SVG_HT)
+        .attr("class", svg)
+        .attr("id", svg);
+}
+
+function init_svg(div, svg, svghdr) {
+
+//var centerX = (windowWidth - width) / 2;
+//var centerY = (windowHeight - height) / 2;
+
+    d3.select(div).select(svg)
+	.attr("width", DFLT_SVG_WID)
+	.attr("height", DFLT_SVG_HT)
 /*
-var C2_SVG_MN = ".svg2";
-var C2_SVG_HDR = ".svg2h3";
-
-var C3_SVG_MN = ".svg3";
-var C3_SVG_HDR = ".svg3h3";
-*/
-
-
-function svg_init() {
-    var height = 600;
-    var width = 600;
-
-var centerX = (windowWidth - width) / 2;
-var centerY = (windowHeight - height) / 2;
-
-    d3.select(".svg1")
-	.attr("width", width)
-	.attr("height", height)
 	.style("background-color", "lightgray");
-
-//	.style("position", "relative")
-//	.style("left", centerX + "px")
-//	.style("top", centerY + "px")
+	.style("position", "relative")
+	.style("left", centerX + "px")
+	.style("top", centerY + "px")
+*/
 
 }
 
-function svg_clean(svg=".svg1", div=".div1") {
+function svg_clean(div, svg) {
     d3.select(svg).selectAll("*").remove();
-//    d3.select(div).select("h3").text("");
-//    d3.select(div).select("p").text("");
-    d3.select("main").select(".svg1h3").text("");
+    d3.select(div).select("h3").text("");
+    d3.select(div).select("p").text("");
 }
 
 function bmi_size(bmi) {
@@ -101,3 +119,17 @@ function gender_col(gender) {
    else
 	return GEN_COL_MALE;
 }
+
+/*
+create_svgs(C1_DIV_ID, C1_SVG_CL, C1_SVG_H3);
+create_svgs(C2_DIV_ID, C2_SVG_CL, C2_SVG_H3);
+create_svgs(C3_DIV_ID, C3_SVG_CL, C3_SVG_H3);
+*/
+init_svg(C1_DIV_ID, C1_SVG_ID, C1_SVG_H3_ID);
+init_svg(C2_DIV_ID, C2_SVG_ID, C2_SVG_H3_ID);
+init_svg(C3_DIV_ID, C3_SVG_ID, C3_SVG_H3_ID);
+
+chart1();
+chart2();
+chart3();
+
