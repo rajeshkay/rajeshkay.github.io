@@ -2,8 +2,19 @@ var GEN_COL_MALE = "darkblue";
 var GEN_COL_FEMALE = "darkgreen";
 var GEN_COL_BOTH = "black";
 
+var AXIS_FONT_FMLY = "Verdana";
+var AXIS_FONT_SZE = "15px";
+var AXIS_FONT_COL = "black";
+var AXIS_LNE_COL = "black";
+var AXIS_LNE_SZE = "1px";
 
-var SZE_vSMALL = 1.5    ;
+var LEG_FONT_FMLY = "Verdana";
+var LEG_FONT_SZE = "15px";
+var LEG_FONT_COL = "blue";
+
+var CLK_HERE_COL = "brown";
+
+var SZE_vSMALL = 1.5;
 var SZE_SMALL = 3;
 var SZE_MED = 5;
 var SZE_LARGE = 9;
@@ -38,6 +49,14 @@ var C2_SVG_HDR = ".svg1h3";
 
 var C3_SVG_MN = ".svg1";
 var C3_SVG_HDR = ".svg1h3";
+
+/*
+var C2_SVG_MN = ".svg2";
+var C2_SVG_HDR = ".svg2h3";
+
+var C3_SVG_MN = ".svg3";
+var C3_SVG_HDR = ".svg3h3";
+*/
 
 
 function svg_init() {
