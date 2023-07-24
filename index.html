@@ -5,54 +5,40 @@
     <title>Common Causes of Stroke</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
-  <style>
-    .known_factors {
-      display: flex;
-      align-items: center;
-    }
-
-    .known_factors {
-      width: 400px; /* Set the desired width of the image */
-      height: 400px;
-      margin-right: 20px; /* Add some spacing between the image and text */
-    }
-  </style>
 </head>
 
-<body style="font-family: Arial, sans-serif; font-size: 12px; color: #800000;">
-    <h1><center>Brain Stroke</center></span></h1>
+<!--
+<body style="font-family: Arial, sans-serif; font-size: 15px; color: #800000;">
+-->
 
-    <div class="summary">
-         <h3>Summary</h3>
-         <p>
-            This page is intended to give an overview about Stroke. It also provides a brief
-            summary of the various known risk factors that can induce a stroke. More importantly,
-            <u> this page offers the viewers an opportunity to visualize and better understand the
-            statistical distribution of the various factors of stroke among a small subset of victims
-            belonging to different age groups</u>.
-         </p>
-         <p>&nbsp;</p>
-    </div>
 
+<body style="font-family: Arial, sans-serif; color: grey;">
+
+    <h1><center><font color= "#800000" font-size = 40px>Brain Stroke</center></font></h1>
     <div class="introduction">
-         <h2><i>What is Stroke?</i></h2>
+         <h2 style="color: black;"><i>What is Stroke?</i></h2>
+
          <p>
-            The brain controls our movements, stores our memories, and is the source of our 
-            thoughts, emotions, and language. The brain also controls many functions of the 
+            The brain controls our movements, stores our memories, and is the source of our
+            thoughts, emotions, and language. The brain also controls many functions of the
             body, like breathing and digestion.
          </p>
 
+         <div class = "illustration" style="float: right; margin-left: 10px;">
+         <img src="data/illustration.jpeg" alt="illustration" class="illustration" width="400">
+
+         </div>
+
          <p>
-            To work properly, your brain needs oxygen. Your arteries deliver oxygen-rich blood 
-            to all parts of your brain. When something blocks blood supply to part of the brain 
-            or when a blood vessel bursts and that part of brain gets damaged, brain cells in 
-            that region start to die within minutes, because they can’t get oxygen. This causes 
+            To work properly, your brain needs oxygen. Your arteries deliver oxygen-rich blood
+            to all parts of your brain. When something blocks blood supply to part of the brain
+            or when a blood vessel bursts and that part of brain gets damaged, brain cells in
+            that region start to die within minutes, because they can’t get oxygen. This causes
             a stroke. A stroke can cause long-term disability, or even death.
          </p>
 
          <p>
-            Strokes are a life-threatening emergency, and immediate medical attention is 
-            critical. The following webpages can provide a good start in better understanding 
+            The following webpages can provide a good start in better understanding
             of Stroke.
          </p>
             <ul>
@@ -67,45 +53,65 @@
                <li><a href="https://health.gov/myhealthfinder/health-conditions/heart-health/reduce-your-risk-stroke">
                         Reducing the Risk of Stroke
                    </a></li>
+               <li><a href="https://en.wikipedia.org/wiki/Stroke">
+                        Wikipedia - About Stroke
+                   </a></li>
             </ul>
 
          </p>
+            Strokes can be classified into two major categories: 
+            <ul>
+               <li><b>Ischemic</b>: Ischemic strokes are caused by interruption of the blood 
+                                    supply to the brain.
+               </li>
+               <li><b>Hemorrhagic</b>: Hemorrhagic strokes result from the rupture of a blood 
+                                    vessel or an abnormal vascular structure.
+               </li>
 
+            </ul>
+
+            About 87% of strokes are ischemic, the rest being hemorrhagic. Bleeding can develop 
+            inside areas of ischemia, a condition known as "hemorrhagic transformation." It is 
+            unknown how many hemorrhagic strokes actually start as ischemic strokes.
+         </p>
          <p><b>
-            While the above webpages offer significant information about stroke, signs of 
-            stroke, etc., one MUST always consult a doctor when in doubt.
+            Strokes are a life-threatening emergency, and immediate medical attention is
+            critical. When there is a doubt, one MUST consult a doctor immediately.
          </b></p>
+         <p>
     </div>
 
    <div class="factors">
-         <h2><i>Risk Factors</i></h2>
+         <h2 style="color: black;"><i>Risk Factors</i></h2>
+
+         <div class = "known_factors" style="float: right; margin-left: 10px;">
+         <img src="data/known_factors.jpeg" alt="known_factors" class="known_factors" width="400">
+         </div>
+
          <p>
             According to the World Health Organization (WHO) stroke is the 2nd leading cause
-            of death globally, responsible for approximately 11% of total deaths. Over the years, 
+            of death globally, responsible for approximately 11% of total deaths. Over the years,
             several factors have been suspected to induce Stroke.
          </p>
-   </div>
-
-   <div class="known_factors">
-        <img src="data/known_factors.jpeg" alt="known_factors" class="known_factors">
-           <p>&nbsp;</p>
-   </div>
-
-   <div class="visual_intro">
-         <h2><i>Common Factors</i></h2>
          <p>
-            In the previous section, most prominent risk factors of stroke was listed. This 
-            is a very generalized and well known information. Are there any additional factors 
-            that can influence stroke? 
+            The picture on the right captures the most prominent risk factors of stroke. This
+            is a very generalized and well known information. <i>Are there any additional factors
+            that can influence stroke?</i>
 
-            The lifetime risk of stroke is higher for women than men, with a 1 in 4 risk of 
-            stroke for women after age 25. Can gender be a factor or can age be a factor? 
+            For example, the lifetime risk of stroke is higher for women than men, with a 
+            1 in 4 risk of stroke for women after age 25. So, <i> can <b>gender</b> be a factor or can 
+            <b>age</b> be a factor?</i>
          </p>
 
+
+   </div>
+
+
+   <div class="visualisation">
+         <h2 style="color: black;"><i>Visualization of Common Factors</i></h2>
          <p>
-            In this section we will explore the influence of some of the well known factors 
-            as well as some factors that are not listed above. 
-            For the purpose of this study, a small dataset of about 250 stroke victims is chosen. 
+            In this section we will explore the influence of some of the well known factors
+            as well as some new factors that are not prominently shown in the picture.
 
          <ul>
              <li>Age <i>(factor not listed above)</i></li>
@@ -118,37 +124,59 @@
          </p>
          <p>
             In the visualizations that follow, one can explore the direct impact of these
-            <i>new</i> factors and also visualize the influence of other known factors when 
+            <i>new</i> factors and also visualize the influence of other known factors when
             the dataset is categorized based on Age and Gender.
          </p>
-   </div>
+         <p>
+            For the purpose of this study, a small dataset of about 250 stroke victims is chosen.
+         </p>
 
+         <div id="chart1" class="chart1">
+            <h3 style="color: black;" class="c1h3" id="c1h3"><center></center></h3>
+            <p></p>
+            <p>
+            The below chart presents the total number of stroke victims in different age groups starting from 30year olds through 90year olds. The dataset did not have any stroke victim above 90year old and below 30year old. The total count of victims is further categorized by their gender. 
+            </p>
 
+            <p>
+            The intent of this chart is to observe the direct influence of <b>Age</b> and 
+            <b>Gender</b> in the onset of Stroke. This chart will be able to provide a clue 
+            if <i>Females</i> are more prone to stroke than <i>Males</i> across all age 
+            groups or across some of the age groups.
+            </p>
 
+            <svg class="c1svg1" id="c1svg1" width="600" height="600"><center></center> </svg>
 
+            <p>
 
+            <b><u>Conclusion</u>:</b> In the given dataset, it is evident that <i>Females</i> in the age group of 50-60 and above 70years are more prone to having Stroke.
+            </p>
+         </div>
 
-    <div id="chart1" class="chart1">
-         <h3 class="c1h3" id="c1h3"><center></center></h3>
-         <p>svg1</p>
-         <svg class="c1svg1" id="c1svg1" width="600" height="600"><center></center> </svg>
+         <div id="chart2" class="chart2">
+            <h3 style="color: black;" class="c2h3" id="c2h3"><center></center></h3>
+            <p></p>
+            <p>
+            Obesity and Diabetes are already identified as risk factors for Stroke. In this visualization, one can observe the effect of these risk factors across Age and Gender.  
+            </p>
+            <p>
+The y-axis of the chart represents Age of the victim at the time of stroke. The x-axis indicates the blood glucose levels. Higher blood glucose level indicates diabetes. BMI is a direct indication of Obesity. The size of the marks (circles) indicate the BMI of the stroke victim. The largest circle indicates obesity. 
+            </p>
+            <p><i>
+This is an interactive chart. The reader can apply filters on different BMI levels and Gender. The filters can be a combination of both these parameters as well.
+            </i></p>
+            <svg class="c2svg1" id="c2svg1" width="600" height="600"><center></center> </svg>
+         </div>
+
          <p>&nbsp;</p>
-    </div>
+         <div id="chart3" class="chart3">
+            <h3 style="color: black;" class="c3h3" id="c3h3"><center></center></h3>
+            <p></p>
 
-    <div id="chart2" class="chart2">
-         <h3 class="c2h3" id="c2h3"><center></center></h3>
-         <p>svg2</p>
-         <svg class="c2svg1" id="c2svg1" width="600" height="600"><center></center> </svg>
-         <p>&nbsp;</p>
+            <svg class="c3svg1" id="c3svg1" width="600" height="600"><center></center> </svg>
+            <p>&nbsp;</p>
     </div>
-
-    <div id="chart3" class="chart3">
-         <h3 class="c3h3" id="c3h3"><center></center></h3>
-         <p>svg3</p>
-         <svg class="c3svg1" id="c3svg1" width="600" height="600"><center></center> </svg>
-         <p>&nbsp;</p>
     </div>
-
     <script src='chart1_bar.js'></script>
     <script src='chart2_scatter.js'></script>
     <script src='chart3_bar.js'></script>
@@ -157,12 +185,34 @@
 </body>
 
 <footer>
-    <p style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10px">
-         <font color="blue">This webpage may have factual deficiencies. 
-           It was created for the purpose of understanding narrative visualization.</font>
-           Dataset is sourced from 
+
+    <div class="summary" style="font-size:12px;"> 
+         <h3 style="color:black"><u>Summary</u></h3>
+         <p style="font-size:12px;">
+            This page is intended to give an overview about Stroke. It also provides a brief
+            summary of the various known risk factors that can induce a stroke. More importantly,
+            <b> this page offers the viewers an opportunity to visualize and better understand the
+            statistical distribution of the various factors of stroke among a small subset of victims
+            belonging to different age groups</b>.
+         </p>
+         <p style="font-size:12px;">
+            This webpage may/will have factual deficiencies. All information present in this page is extracted from internet search and mainly from the following web-pages:
+            <ul>
+               <li><a href="https://www.cdc.gov/stroke/about.htm">
+                        CDC - <i>Stroke Home </i>
+                   </a></li>
+               <li><a href="https://en.wikipedia.org/wiki/Stroke">
+                        Wikipedia - About Stroke
+                   </a></li>
+            </ul>
+         </p>
+         <p style="font-size:12px; color=blue">
+This page was created for the purpose of understanding/demonstrating narrative visualization. Dataset used for creating the charts is sourced from
          <a href="https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset">www.kaggle.com
          </a>
-    </p> 
+         </p>
+    </div>
+    <hr>
 </footer>
 </html>
+
