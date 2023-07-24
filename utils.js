@@ -120,11 +120,6 @@ function gender_col(gender) {
 	return GEN_COL_MALE;
 }
 
-/*
-create_svgs(C1_DIV_ID, C1_SVG_CL, C1_SVG_H3);
-create_svgs(C2_DIV_ID, C2_SVG_CL, C2_SVG_H3);
-create_svgs(C3_DIV_ID, C3_SVG_CL, C3_SVG_H3);
-*/
 init_svg(C1_DIV_ID, C1_SVG_ID, C1_SVG_H3_ID);
 init_svg(C2_DIV_ID, C2_SVG_ID, C2_SVG_H3_ID);
 init_svg(C3_DIV_ID, C3_SVG_ID, C3_SVG_H3_ID);

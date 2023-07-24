@@ -505,7 +505,7 @@ function draw_factors() {
                   offset = 10;
               else if (i == 3)
                   offset = 50;
-              return (i * 100 + offset) })
+              return (i * 90 + offset) })
       .attr("alignment-baseline", "left")
       .style("font-size", LEG_FONT_SZE)
       .style("fill", LEG_FONT_COL)
@@ -520,7 +520,7 @@ function draw_factors() {
          .attr("y", -2);
 
     var textBox = textObj.append("xhtml:h4")
-        .text("Click to Filter >>")
+        .text("Select a Factor: ")
         .attr("class", "factClkText")
         .style("font-weight", "bold")
         .style("font-size", LEG_FONT_SZE)
@@ -720,10 +720,10 @@ function c3_translate(shortStr) {
        return "No Heart Issue";
 
     if (shortStr == "count_ht")
-       return "Hypertension";
+       return "Blood Pressure";
 
     if (shortStr == "count_nht")
-       return "No Hypertension";
+       return "No Blood Pressure";
 
     if (shortStr == "count_rural")
        return "Rural";
