@@ -181,6 +181,8 @@ async function chart1() {
         .attr("fill", function(d,i) { return gender_col("Male") })
         .on("mouseover", function(d,i) { return mouse_over(d, i, "Male") })
         .on("mouseenter", function(d,i) { return mouse_over(d, i, "Male") });
+
+    add_gen_legend();
 }
 
 function mouse_over(event, d, gender) {
@@ -189,4 +191,39 @@ function mouse_over(event, d, gender) {
                   "\n# Percentage: " + Math.round((d.count/d.total)*100) + "%";
     var classStr = "." + gender + d.age;
     return d3.select(classStr).append("title").text(tooltip);
+}
+
+function add_gen_legend(svgId = C1_SVG_ID) {
+    svg1 = d3.select(svgId).append("g")
+                    .attr("transform", "translate(" +(2*MARGIN+10)+ ",20)");
+
+    var keys = ["Female","Male"];
+    var keyCol = [GEN_COL_FEMALE, GEN_COL_MALE];
+
+    svg1.selectAll("rect")
+      .data(keys)
+      .enter()
+      .append("rect")
+      .attr("class", "legGenTextRect")
+      .text(function(d,i) { return keys[i];})
+      .attr("height", 10)
+      .attr("width", 10)
+      .attr("x", function(d,i) { return (i*130 - MARGIN) })
+      .attr("y", (MARGIN))
+      .attr("fill", function(d,i) { return keyCol[i]; });
+
+    svg1.selectAll("text")
+      .data(keys)
+      .enter()
+      .append("text")
+      .attr("class", "legGenText")
+      .attr("x", function(d,i) {
+           return (15 + i*130 - MARGIN) })
+      .attr("y", MARGIN+10)
+      .attr("alignment-baseline", "left")
+      .style("font-size", LEG_FONT_SZE)
+      .style("fill", "black")
+      .text(d => d);
+    
+
 }

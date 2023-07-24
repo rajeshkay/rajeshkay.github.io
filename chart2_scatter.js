@@ -231,7 +231,7 @@ function add_legend(){
 
     var textObj = d3.select(C2_SVG_ID).append("foreignObject")
          .attr("width", 120)
-         .attr("height",100)
+         .attr("height",40)
          .attr("x", 5)
          .attr("y", 0);
 
@@ -242,10 +242,10 @@ function add_legend(){
         .style("font-size", LEG_FONT_SZE)
         .style("color", CLK_HERE_COL)
         .on("click", legend_click);
-
 }
 
 function legend_click() {
+console.log(this.textContent);
 
     if (this.textContent == "Clear BMI Selection") {
         slxnFlag &= RST_BMI;
@@ -327,8 +327,8 @@ function add_clear() {
     var textObj = d3.select(C2_SVG_ID).append("foreignObject")
          .attr("width", 150)
          .attr("height",100)
-         .attr("x", (width/2))
-         .attr("y", 25);
+         .attr("x", 5)
+         .attr("y", 35);
 
     var textBox = textObj.append("xhtml:h4")
         .text("Clear BMI Selection")

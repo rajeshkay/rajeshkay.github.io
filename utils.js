@@ -1,5 +1,5 @@
-var GEN_COL_MALE = "darkblue";
-var GEN_COL_FEMALE = "darkgreen";
+var GEN_COL_MALE = "brown";
+var GEN_COL_FEMALE = "grey";
 var GEN_COL_BOTH = "black";
 
 var AXIS_FONT_FMLY = "Verdana";

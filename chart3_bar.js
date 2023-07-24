@@ -428,7 +428,8 @@ async function chart3() {
 
     draw_axis(xAxis, yAxis);
     draw_factors();
-    
+
+    add_gen_legend(C3_SVG_ID);
     plot_smoking();
 }
 
@@ -459,6 +460,10 @@ function draw_axis(xAxis, yAxis) {
         .selectAll("text") 
         .style("font-weight", "normal") 
         .style("color", "grey");
+
+    svg1 = d3.select(C3_SVG_ID)
+        .append("g")
+        .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
 
     svg1.append("text")
       .attr("class", "x-axis-title")
@@ -524,7 +529,7 @@ function draw_factors() {
 
 
     var textObj2 = d3.select(C3_SVG_ID).append("foreignObject")
-         .attr("width", 150)
+         .attr("width", 200)
          .attr("height",100)
          .attr("x", 70)
          .attr("y", (height - 4*MARGIN));
@@ -584,7 +589,7 @@ function feature_click() {
 function plot_smoking() {
     d3.select(".factText").text("Factor: Smoking and Non-smoking");
     var keys = ["count_nsm", "count_fsm", "count_sm", "count_unk"];
-    var keyCol = ["lightgreen", "orange", "red", "lightblue"];
+    var keyCol = ["green", "orange", "red", "lightblue"];
 
     var stackedDataFemale = d3.stack().keys(keys)(aggSmokingDataFemale);
     var stackedDataMale = d3.stack().keys(keys)(aggSmokingDataMale);
@@ -596,12 +601,13 @@ function plot_smoking() {
     stacked_bar(1, stackedDataFemale, colorScale, 0);
     stacked_bar(2, stackedDataMale, colorScale, barWidth);
     draw_axis(xAxis, yAxis);
+    c3_add_legend(keys, keyCol);
 }
 
 function plot_residence() {
-    d3.select(".factText").text("Factor: Residence Type - Rural vs Urban");
-    var keys = ["count_rural", "count_urban"];
-    var keyCol = ["magenta", "pink"];
+    d3.select(".factText").text("Factor: Residence Type");
+    var keys = ["count_urban", "count_rural"];
+    var keyCol = ["pink", "purple"];
 
     var stackedDataFemale = d3.stack().keys(keys)(aggResidDataFemale);
     var stackedDataMale = d3.stack().keys(keys)(aggResidDataMale);
@@ -613,12 +619,14 @@ function plot_residence() {
     stacked_bar(1, stackedDataFemale, colorScale, 0);
     stacked_bar(2, stackedDataMale, colorScale, barWidth);
     draw_axis(xAxis, yAxis);
+    c3_add_legend(keys, keyCol);
 }
 
 function plot_heart() {
     d3.select(".factText").text("Factor: Heart Disease");
     var keys = ["count_hd", "count_nhd"];
-    var keyCol = ["orange", "brown"];
+    var keyCol = ["red", "green"];
+//    var keyCol = ["orange", "brown"];
 
     var stackedDataFemale = d3.stack().keys(keys)(aggHrtDataFemale);
     var stackedDataMale = d3.stack().keys(keys)(aggHrtDataMale);
@@ -630,14 +638,15 @@ function plot_heart() {
     stacked_bar(1, stackedDataFemale, colorScale, 0);
     stacked_bar(2, stackedDataMale, colorScale, barWidth);
     draw_axis(xAxis, yAxis);
-
+    c3_add_legend(keys, keyCol);
 }
 
 function plot_ht() {
 
     d3.select(".factText").text("Factor: Hypertension");
     var keys = ["count_ht", "count_nht"];
-    var keyCol = ["cyan", "lightcyan"];
+    var keyCol = ["red", "green"];
+//    var keyCol = ["cyan", "lightcyan"];
 
     var stackedDataFemale = d3.stack().keys(keys)(aggHtDataFemale);
     var stackedDataMale = d3.stack().keys(keys)(aggHtDataMale);
@@ -649,6 +658,78 @@ function plot_ht() {
     stacked_bar(1, stackedDataFemale, colorScale, 0);
     stacked_bar(2, stackedDataMale, colorScale, barWidth);
     draw_axis(xAxis, yAxis);
+    c3_add_legend(keys, keyCol);
 
 }
 
+function c3_add_legend(legText, legCol) {
+
+    d3.selectAll(".legTextRect").remove();
+    d3.selectAll(".legText").remove();
+
+    var legendTxt = d3.select(C3_SVG_ID).append("g")
+                        .attr("transform", "translate(" +(2*MARGIN+10)+ ",20)");
+
+    legendTxt.selectAll("rect")
+      .data(legText)
+      .enter()
+      .append("rect")
+      .attr("class", "legTextRect")
+      .text(function(d,i) { return legText[i];})
+      .attr("height", 10)
+      .attr("width", 10)
+      .attr("x", function(d,i) { return (i*130 - MARGIN) })
+      .attr("y", (height - 2*MARGIN))
+      .attr("fill", function(d,i) { return legCol[i]; });
+
+    legendTxt.selectAll("text")
+      .data(legText)
+      .enter()
+      .append("text")
+      .attr("class", "legText")
+      .attr("x", function(d,i) { 
+           var offset = c3_translate(d).length - 10;
+           if (offset < 0)
+               offset = 0;
+           return (15 + offset + i*130 - MARGIN) })
+      .attr("y", (height - 2*MARGIN + 9))
+      .attr("alignment-baseline", "left")
+      .style("font-size", LEG_FONT_SZE)
+      .style("fill", "black")
+      .text(function(d,i) { return c3_translate(d) })
+}
+
+function c3_translate(shortStr) {
+
+    if (shortStr == "count_sm")
+       return "Active Smoker";
+
+    if (shortStr == "count_nsm")
+       return "Non Smoker";
+
+    if (shortStr == "count_fsm")
+       return "Past Smoker";
+
+    if (shortStr == "count_unk")
+       return "Unknown";
+
+    if (shortStr == "count_hd")
+       return "Heart Patient";
+
+    if (shortStr == "count_nhd")
+       return "No Heart Issue";
+
+    if (shortStr == "count_ht")
+       return "Hypertension";
+
+    if (shortStr == "count_nht")
+       return "No Hypertension";
+
+    if (shortStr == "count_rural")
+       return "Rural";
+
+    if (shortStr == "count_urban")
+       return "Urban";
+
+    return shortStr;
+}
