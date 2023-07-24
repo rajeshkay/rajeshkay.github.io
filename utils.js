@@ -6,7 +6,7 @@ var AXIS_FONT_FMLY = "Verdana";
 var AXIS_FONT_SZE = "15px";
 var AXIS_FONT_COL = "black";
 var AXIS_LNE_COL = "black";
-var AXIS_LNE_SZE = "1px";
+var AXIS_LNE_SZE = "2px";
 
 var LEG_FONT_FMLY = "Verdana";
 var LEG_FONT_SZE = "15px";

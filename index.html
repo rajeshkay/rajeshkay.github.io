@@ -12,7 +12,7 @@
 -->
 
 
-<body style="font-family: Arial, sans-serif; color: grey;">
+<body style="font-family: Callibri, sans-serif; color: grey;">
 
     <h1><center><font color= "#800000" font-size = 40px>Brain Stroke</center></font></h1>
     <div class="introduction">
@@ -120,6 +120,7 @@
              <li>Obesity</li>
              <li>Heart Disease</li>
              <li>Smoking</li>
+             <li>Residence <i>(factor not listed above)</i></li>
          </ul>
          </p>
          <p>
@@ -142,9 +143,11 @@
             The intent of this chart is to observe the direct influence of <b>Age</b> and 
             <b>Gender</b> in the onset of Stroke. This chart will be able to provide a clue 
             if <i>Females</i> are more prone to stroke than <i>Males</i> across all age 
-            groups or across some of the age groups.
+            groups or across some of the age groups. 
             </p>
-
+            <p>
+            The x-axis of this chart shows different age groups. The y-axis of the chart provides the count of stroke victims. For each age group, there is a bar for Male and another for Female presenting the total count of stroke victims per Gender for each age group.
+            </p>
             <svg class="c1svg1" id="c1svg1" width="600" height="600"><center></center> </svg>
 
             <p>
@@ -163,7 +166,7 @@
 The y-axis of the chart represents Age of the victim at the time of stroke. The x-axis indicates the blood glucose levels. Higher blood glucose level indicates diabetes. BMI is a direct indication of Obesity. The size of the marks (circles) indicate the BMI of the stroke victim. The largest circle indicates obesity. 
             </p>
             <p><i>
-This is an interactive chart. The reader can apply filters on different BMI levels and Gender. The filters can be a combination of both these parameters as well.
+This is an interactive chart. The reader can apply filters on different BMI levels or Gender or both. These filters help visualize the effect of blood glucose level and obesity for different gender and age.
             </i></p>
             <svg class="c2svg1" id="c2svg1" width="600" height="600"><center></center> </svg>
          </div>
@@ -172,7 +175,23 @@ This is an interactive chart. The reader can apply filters on different BMI leve
          <div id="chart3" class="chart3">
             <h3 style="color: black;" class="c3h3" id="c3h3"><center></center></h3>
             <p></p>
+This chart combines the other prominent factors like smoking , blood pressure and heart disease along with a new factor - <i>Residence Type</i>.
+         </p>
+         <p>
+            This is a bidirectional interactive chart. The x-axis of this chart shows different age groups. The y-axis of the chart provides the count of stroke victims.
+            For each age group, there is a bar in the upward direction for Male and another for Female presenting the total count of stroke victims per Gender for each age group. Based on the selection of <i>factor</i>, the downward graph presents the distribution of victims for each in each factor.
+         </p> 
+         <p> 
+            This dataset has the following information about these factors - 
+            <ul>
+               <li><a>Blood Pressure: The dataset contains information whether an individual has blood pressure or not.</a></li>
 
+               <li><a>Heart Disease: The dataset contains presence or absence of heart disease.</a></li>
+               <li><a>Smoking Status: There are 4 categories for smoking - stroke victim who is not a smoker, victim who is active smoker, someone who has smoked in the past and a few of them the smoking status is unknown. </a></li>
+
+               <li><a>Residence Type: The Residence type has two values - if the victim was residing in an Urban area and Rural area. </a></li>
+            </ul>
+         </p> 
             <svg class="c3svg1" id="c3svg1" width="600" height="600"><center></center> </svg>
             <p>&nbsp;</p>
     </div>
@@ -195,6 +214,7 @@ This is an interactive chart. The reader can apply filters on different BMI leve
             statistical distribution of the various factors of stroke among a small subset of victims
             belonging to different age groups</b>.
          </p>
+
          <p style="font-size:12px;">
             This webpage may/will have factual deficiencies. All information present in this page is extracted from internet search and mainly from the following web-pages:
             <ul>

@@ -108,7 +108,7 @@ async function chart1() {
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
         .style("stroke-width", AXIS_LNE_SZE)
-        .style("fill", AXIS_LNE_COL)
+        .style("color", AXIS_LNE_COL)
         .call(yAxis)
         .selectAll("text")
         .style("font-weight", "bold");
@@ -117,7 +117,7 @@ async function chart1() {
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(height - MARGIN)+ ")" )
         .style("stroke-width", AXIS_LNE_SZE)
-        .style("fill", AXIS_LNE_COL)
+        .style("color", AXIS_LNE_COL)
         .call(xAxis)
         .selectAll("text")
         .style("font-weight", "bold");

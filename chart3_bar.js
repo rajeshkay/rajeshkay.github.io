@@ -437,7 +437,7 @@ function draw_axis(xAxis, yAxis) {
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
 	.style("stroke-width", AXIS_LNE_SZE)
-        .style("fill", AXIS_LNE_COL)
+        .style("color", AXIS_LNE_COL)
         .call(yAxis)
         .selectAll("text") 
         .style("font-weight", "bold"); 
@@ -446,7 +446,7 @@ function draw_axis(xAxis, yAxis) {
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(height/2)+ ")" )
 	.style("stroke-width", AXIS_LNE_SZE)
-        .style("fill", AXIS_LNE_COL)
+        .style("color", AXIS_LNE_COL)
         .call(xAxis)
         .selectAll("text") 
         .style("font-weight", "bold"); 
@@ -494,10 +494,17 @@ function draw_factors() {
       .append("text")
       .attr("class", (d, i) => (factors[i]))
       .attr("y", 12)
-      .attr("x", (d, i) => (i * 100 + factors[i].length))
+      .attr("x", function(d, i){
+              var offset = 0;
+              if (i == 2)
+                  offset = 10;
+              else if (i == 3)
+                  offset = 50;
+              return (i * 100 + offset) })
       .attr("alignment-baseline", "left")
       .style("font-size", LEG_FONT_SZE)
       .style("fill", LEG_FONT_COL)
+      .style("text-decoration", "underline")
       .text(d => d)
       .on("click", feature_click);
 
@@ -519,8 +526,8 @@ function draw_factors() {
     var textObj2 = d3.select(C3_SVG_ID).append("foreignObject")
          .attr("width", 150)
          .attr("height",100)
-         .attr("x", 80)
-         .attr("y", (height - 3*MARGIN));
+         .attr("x", 70)
+         .attr("y", (height - 4*MARGIN));
 
     var textBox2 = textObj2.append("xhtml:h4")
         .text("")

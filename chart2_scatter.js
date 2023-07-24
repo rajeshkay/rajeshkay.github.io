@@ -2,7 +2,7 @@ var dataset;
 var subsetData;
 
 var height, width;
-var scaleX, scaleY;
+var c2ScaleX, c2ScaleY;
 
 var glucTickVals = [50,100, 150, 200, 250]
 var ageTickVals = [30, 40, 50, 60, 70, 80]
@@ -28,8 +28,8 @@ function plot_chart(data) {
 		.data(data)
 		.enter()
 		.append("circle")
-		.attr("cx", function(d,i) { return (scaleX(data[i].avg_glucose_level)) })
-		.attr("cy", function(d,i) { return (scaleY(data[i].age)) })
+		.attr("cx", function(d,i) { return (c2ScaleX(data[i].avg_glucose_level)) })
+		.attr("cy", function(d,i) { return (c2ScaleY(data[i].age)) })
 		.attr("r", function(d,i)  { return bmi_size(data[i].bmi) })
 		.style("fill", function(d,i)  { return gender_col(data[i].gender) })
 		.style("stroke", function(d,i)  { return gender_col(data[i].gender) })
@@ -56,20 +56,20 @@ async function chart2() {
     var avgGlucoseLevel = dataset.map(function(d) {
 	return parseFloat(d.avg_glucose_level); });
 
-    scaleX = d3.scaleLinear()
+    c2ScaleX = d3.scaleLinear()
 		.domain([50, d3.max(avgGlucoseLevel)])
                 .range([0, (width - (2*MARGIN))]);
 
-    scaleY = d3.scaleLinear()
+    c2ScaleY = d3.scaleLinear()
 		.domain([d3.min(ageTickVals), d3.max(age)])
 		.range([height-(3*MARGIN),0]);
 
 
-    xAxis = d3.axisBottom(scaleX)
+    xAxis = d3.axisBottom(c2ScaleX)
 		.tickValues(glucTickVals)
 		.tickFormat(function(d, i) {return glucTickVals[i]});
 
-    yAxis = d3.axisLeft(scaleY)
+    yAxis = d3.axisLeft(c2ScaleY)
 		.tickValues(ageTickVals)
 		.tickFormat(function(d, i) {return ageTickVals[i]});
 
@@ -80,7 +80,7 @@ async function chart2() {
 	.append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(2*MARGIN)+ ")")
         .style("stroke-width", AXIS_LNE_SZE)
-        .style("fill", AXIS_LNE_COL)
+        .style("color", AXIS_LNE_COL)
 	.call(yAxis)
         .selectAll("text")
         .style("font-weight", "bold");
@@ -89,7 +89,7 @@ async function chart2() {
 	.append("g")
 	.attr("transform", "translate("+MARGIN+","+(height - MARGIN)+")")
         .style("stroke-width", AXIS_LNE_SZE)
-        .style("fill", AXIS_LNE_COL)
+        .style("color", AXIS_LNE_COL)
 	.call(xAxis)
         .selectAll("text")
         .style("font-weight", "bold");
@@ -176,16 +176,16 @@ function add_button(buttonText, onclick, x, y, col) {
     d3.select(".genClkText").remove();
     var textObj = svg1.append("foreignObject")
          .attr("width", 120)
-         .attr("height", 30)
+         .attr("height",100)
          .attr("x", -MARGIN)
-         .attr("y", (y-10));
+         .attr("y", (y-15));
 
     var textBox = textObj.append("xhtml:h4")
-        .text("Choose to filter >>")
+        .text("Click to Filter")
         .attr("class", "genClkText")
-        .style("font-size", "12px")
         .style("font-weight", "bold")
-        .style("color", filterTxtCol);
+        .style("font-size", LEG_FONT_SZE)
+        .style("color", CLK_HERE_COL);
 }
 
 function add_legend(){
@@ -203,7 +203,7 @@ function add_legend(){
       .attr("id", (d, i) => ("bmiCle-"+bmiText[i]))
       .text(function(d,i) { return bmiText[i];})
       .attr("cy", 10)
-      .attr("cx", (d, i) => i * 120)
+      .attr("cx", (d, i) => (30 + i * 130))
       .attr("r", d => d)
       .attr("fill", "steelblue")
       .on("click", legend_click);
@@ -214,26 +214,33 @@ function add_legend(){
       .append("text")
       .attr("class", "bmiText")
       .attr("id", (d, i) => ("bmiTxt-"+bmiText[i]))
-      .attr("y", 12)
-      .attr("x", (d, i) => i * 120 + sizeValues[i] +5)
-      .attr("alignment-baseline", "middle")
-      .style("font-size", "12px")
-      .style("color", "blue")
+      .attr("y", 14)
+      .attr("x", function(d, i){
+              var offset = 0;
+              if (i == 2)
+                  offset = 3;
+              else if (i == 3)
+                  offset = 6;
+              return (40 + i * 130 + offset) })
+      .attr("alignment-baseline", "left")
+      .style("font-size", LEG_FONT_SZE)
+      .style("fill", LEG_FONT_COL)
+      .style("text-decoration", "underline")
       .text(d => d)
       .on("click", legend_click);
 
     var textObj = d3.select(C2_SVG_ID).append("foreignObject")
          .attr("width", 120)
-         .attr("height", 30)
+         .attr("height",100)
          .attr("x", 5)
-         .attr("y", 8);
+         .attr("y", 0);
 
     var textBox = textObj.append("xhtml:h4")
         .text("Click to Filter >>")
         .attr("class", "bmiClkText")
-        .style("font-size", "12px")
         .style("font-weight", "bold")
-        .style("color", filterTxtCol)
+        .style("font-size", LEG_FONT_SZE)
+        .style("color", CLK_HERE_COL)
         .on("click", legend_click);
 
 }
@@ -318,15 +325,15 @@ function filter_data() {
 
 function add_clear() {
     var textObj = d3.select(C2_SVG_ID).append("foreignObject")
-         .attr("width", 120)
-         .attr("height", 30)
-         .attr("x", 5)
+         .attr("width", 150)
+         .attr("height",100)
+         .attr("x", (width/2))
          .attr("y", 25);
 
     var textBox = textObj.append("xhtml:h4")
         .text("Clear BMI Selection")
         .attr("class", "bmiClrText")
-        .style("font-size", "12px")
+        .style("font-size", LEG_FONT_SZE)
         .style("font-weight", "bold")
         .style("color", clrTxtCol)
         .on("click", legend_click);
