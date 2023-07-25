@@ -5,7 +5,7 @@ var height, width;
 var ageTickVals = [30, 40, 50, 60, 70, 80];
 var ageTickValsAxis = ["30-40", "40-50", "50-60", "60-70", "70-80", "80-90"];
 
-var factors = ["Smoking", "Residence", "Heart Disease", "Hypertension"];
+var factors = ["Smoking", "Heart Disease", "Hypertension", "Residence Type"];
 
 var aggDataMale = [
     { age: "30-40", count: 0, total: 0 },
@@ -501,10 +501,10 @@ function draw_factors() {
       .attr("y", 12)
       .attr("x", function(d, i){
               var offset = 0;
-              if (i == 2)
-                  offset = 10;
-              else if (i == 3)
-                  offset = 50;
+              if (i == 3)
+                  offset = 60;
+              else if (i == 2)
+                  offset = 30;
               return (i * 90 + offset) })
       .attr("alignment-baseline", "left")
       .style("font-size", LEG_FONT_SZE)
@@ -579,11 +579,11 @@ function feature_click() {
     if (this.textContent == factors[0]) 
         plot_smoking();
     else if (this.textContent == factors[1]) 
-        plot_residence();
-    else if (this.textContent == factors[2]) 
         plot_heart();
-    else if (this.textContent == factors[3]) 
+    else if (this.textContent == factors[2]) 
         plot_ht();
+    else if (this.textContent == factors[3]) 
+        plot_residence();
 }
 
 function plot_smoking() {
