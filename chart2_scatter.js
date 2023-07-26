@@ -174,11 +174,18 @@ function add_button(buttonText, onclick, x, y, col) {
         .on("click", onclick);
 
     d3.select(".genClkText").remove();
+/*
     var textObj = svg1.append("foreignObject")
          .attr("width", 120)
          .attr("height",100)
          .attr("x", -MARGIN)
          .attr("y", (y-15));
+*/
+    var textObj = d3.select(C2_SVG_ID).append("g").append("foreignObject")
+         .attr("width", 120)
+         .attr("height",100)
+         .attr("x", 5)
+         .attr("y", (y+MARGIN+35));
 
     var textBox = textObj.append("xhtml:h4")
         .text("Click to Filter")
@@ -234,9 +241,16 @@ function add_legend(){
          .attr("height",40)
          .attr("x", 5)
          .attr("y", 0);
+/*
+      var textObj = sizeLegend.append("foreignObject")
+         .attr("width", 120)
+         .attr("height",40)
+         .attr("x", -2*MARGIN)
+         .attr("y", -20);
+*/
 
     var textBox = textObj.append("xhtml:h4")
-        .text("Click to Filter >>")
+        .text("Click BMI to Filter")
         .attr("class", "bmiClkText")
         .style("font-weight", "bold")
         .style("font-size", LEG_FONT_SZE)
