@@ -19,12 +19,27 @@ function plot_chart(data) {
     svg1.selectAll("circle").remove();
     svg1.selectAll(".bmiText").remove();
     svg1.selectAll(".bmiClkText").remove();
+    svg1.selectAll(".blnkText").remove();
 
     svg1 = d3.select(C2_SVG_ID)
              .append("g")
              .attr("transform", "translate(" +MARGIN+ "," +(2*MARGIN)+ ")")
 
-    svg1.selectAll("circle")
+    if (data.length == 0) {
+
+        var textObj = svg1.append("foreignObject")
+            .attr("width", 150)
+            .attr("height",200)
+            .attr("x", (DFLT_SVG_WID/3))
+            .attr("y", (DFLT_SVG_HT/2));
+                
+        textBox = textObj.append("xhtml:h4")
+            .text("There is no data for this selection")
+            .attr("class", "blnkText")
+            .style("font-size", LEG_FONT_SZE);
+    }
+    else {
+        svg1.selectAll("circle")
 		.data(data)
 		.enter()
 		.append("circle")
@@ -33,6 +48,7 @@ function plot_chart(data) {
 		.attr("r", function(d,i)  { return bmi_size(data[i].bmi) })
 		.style("fill", function(d,i)  { return gender_col(data[i].gender) })
 		.style("stroke", function(d,i)  { return gender_col(data[i].gender) })
+    }
 
     add_legend();
 }

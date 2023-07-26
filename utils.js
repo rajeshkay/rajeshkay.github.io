@@ -12,6 +12,8 @@ var LEG_FONT_FMLY = "Verdana";
 var LEG_FONT_SZE = "15px";
 var LEG_FONT_COL = "blue";
 
+var ANN_FONT_COL = "red";
+
 var CLK_HERE_COL = "brown";
 
 var SZE_vSMALL = 1.5;

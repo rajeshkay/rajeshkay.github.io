@@ -183,6 +183,7 @@ async function chart1() {
         .on("mouseenter", function(d,i) { return mouse_over(d, i, "Male") });
 
     add_gen_legend();
+    add_annotation(scaleX, scaleY);
 }
 
 function mouse_over(event, d, gender) {
@@ -225,5 +226,48 @@ function add_gen_legend(svgId = C1_SVG_ID) {
       .style("fill", "black")
       .text(d => d);
     
+
+}
+
+function add_annotation(scaleX, scaleY, svg= C1_SVG_ID) {
+
+    var svg = d3.select(C1_SVG_ID).append("g")
+                .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
+
+    var destX = 120; //230
+    var destY = 200; //120
+
+    var textObj = svg.append("foreignObject")
+         .attr("width", 150)
+         .attr("height",200)
+         .attr("x", scaleX("30-40")+BAR_SPACE)
+         .attr("y", scaleY(40));
+                
+    textBox = textObj.append("xhtml:h4")
+        .text("Females appears more vulnerable in these age groups.")
+        .attr("class", "annText")
+        .style("font-size", LEG_FONT_SZE)
+        .style("color", ANN_FONT_COL);
+
+    svg.append("line")
+        .attr("x1", (scaleX("70-80") + BAR_SPACE/2))
+        .attr("y1", (scaleY(30)))
+        .attr("x2", destX)
+        .attr("y2", destY)
+        .attr("stroke", "black");
+ 
+    svg.append("line")
+        .attr("x1", (scaleX("80-90") + BAR_SPACE/2))
+        .attr("y1", (scaleY(22)))
+        .attr("x2", destX)
+        .attr("y2", destY)
+        .attr("stroke", "black");
+
+    svg.append("line")
+        .attr("x1", (scaleX("50-60") + BAR_SPACE))
+        .attr("y1", (scaleY(26)))
+        .attr("x2", destX)
+        .attr("y2", destY)
+        .attr("stroke", "black");
 
 }
