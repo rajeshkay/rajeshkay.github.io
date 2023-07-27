@@ -190,18 +190,13 @@ function add_button(buttonText, onclick, x, y, col) {
         .on("click", onclick);
 
     d3.select(".genClkText").remove();
-/*
+
+//    var textObj = d3.select(C2_SVG_ID).append("g").append("foreignObject")
     var textObj = svg1.append("foreignObject")
-         .attr("width", 120)
-         .attr("height",100)
+         .attr("width", 100)
+         .attr("height",120)
          .attr("x", -MARGIN)
-         .attr("y", (y-15));
-*/
-    var textObj = d3.select(C2_SVG_ID).append("g").append("foreignObject")
-         .attr("width", 120)
-         .attr("height",100)
-         .attr("x", 5)
-         .attr("y", (y+MARGIN+35));
+         .attr("y", (y-10));
 
     var textBox = textObj.append("xhtml:h4")
         .text("Click to Filter")
@@ -275,7 +270,6 @@ function add_legend(){
 }
 
 function legend_click() {
-console.log(this.textContent);
 
     if (this.textContent == "Clear BMI Selection") {
         slxnFlag &= RST_BMI;

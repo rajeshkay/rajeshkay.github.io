@@ -434,11 +434,14 @@ async function chart3() {
 }
 
 function draw_axis(xAxis, yAxis) {
+
+    d3.select(C3_SVG_ID).selectAll(".axis").remove();
     d3.select(C3_SVG_ID)
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
 	.style("stroke-width", AXIS_LNE_SZE)
         .style("color", AXIS_LNE_COL)
+        .attr("class","axis")
         .call(yAxis)
         .selectAll("text") 
         .style("font-weight", "bold"); 
@@ -448,6 +451,7 @@ function draw_axis(xAxis, yAxis) {
         .attr("transform", "translate(" +MARGIN+ "," +(height/2)+ ")" )
 	.style("stroke-width", AXIS_LNE_SZE)
         .style("color", AXIS_LNE_COL)
+        .attr("class","axis")
         .call(xAxis)
         .selectAll("text") 
         .style("font-weight", "bold"); 
@@ -456,6 +460,7 @@ function draw_axis(xAxis, yAxis) {
         .append("g")
         .attr("transform", "translate(" +MARGIN+ "," +(height - MARGIN)+ ")" )
         .style("stroke-width", "0.2px")
+        .attr("class","axis")
         .call(xAxis)
         .selectAll("text") 
         .style("font-weight", "normal") 
@@ -471,6 +476,7 @@ function draw_axis(xAxis, yAxis) {
       .attr("y", height - MARGIN - 15)
       .attr("text-anchor", "middle")
       .text("Age Groups")
+      .attr("class","axis")
       .style("fill", AXIS_FONT_COL)
       .style("font-family", AXIS_FONT_FMLY)
       .style("font-size", AXIS_FONT_SZE);
@@ -479,6 +485,7 @@ function draw_axis(xAxis, yAxis) {
       .attr("class", "y-axis-title")
       .attr("x", -height / 2 +MARGIN)
       .attr("y", -30)
+      .attr("class","axis")
       .attr("text-anchor", "middle")
       .attr("transform", "rotate(-90)")
       .text("Number of Stroke Patients")
@@ -554,7 +561,7 @@ function stacked_bar(layNum=1, stackedData, stDatacolor, shift){
         .append("g")
         .attr("class", layerCls)
         .style("fill", function(d,i) { return stDatacolor(i); })
-        .style("opacity", 0.7)
+        .style("opacity", 1)
         .attr("transform", "translate(" +MARGIN+ "," +MARGIN+ ")")
 
     layer.selectAll("rect")
@@ -624,9 +631,8 @@ function plot_residence() {
 
 function plot_heart() {
     d3.select(".factText").text("Factor: Heart Disease");
-    var keys = ["count_hd", "count_nhd"];
-    var keyCol = ["red", "green"];
-//    var keyCol = ["orange", "brown"];
+    var keys = ["count_nhd", "count_hd"];
+    var keyCol = ["green", "red"];
 
     var stackedDataFemale = d3.stack().keys(keys)(aggHrtDataFemale);
     var stackedDataMale = d3.stack().keys(keys)(aggHrtDataMale);
@@ -644,8 +650,8 @@ function plot_heart() {
 function plot_ht() {
 
     d3.select(".factText").text("Factor: Hypertension");
-    var keys = ["count_ht", "count_nht"];
-    var keyCol = ["red", "green"];
+    var keys = ["count_nht", "count_ht"];
+    var keyCol = ["green", "red"];
 //    var keyCol = ["cyan", "lightcyan"];
 
     var stackedDataFemale = d3.stack().keys(keys)(aggHtDataFemale);
@@ -720,10 +726,10 @@ function c3_translate(shortStr) {
        return "No Heart Issue";
 
     if (shortStr == "count_ht")
-       return "Blood Pressure";
+       return "Hypertension";
 
     if (shortStr == "count_nht")
-       return "No Blood Pressure";
+       return "No Hypertension";
 
     if (shortStr == "count_rural")
        return "Rural";
