@@ -194,7 +194,11 @@ function mouse_over(event, d, gender) {
     return d3.select(classStr).append("title").text(tooltip);
 }
 
-function add_gen_legend(svgId = C1_SVG_ID) {
+function add_gen_legend(svgId = C1_SVG_ID, xOff=0, yOff=0) {
+
+    d3.select(svgId).selectAll(".legGenTextRect").remove();
+    d3.select(svgId).selectAll(".legGenText").remove();
+
     svg1 = d3.select(svgId).append("g")
                     .attr("transform", "translate(" +(2*MARGIN+10)+ ",20)");
 
@@ -209,8 +213,8 @@ function add_gen_legend(svgId = C1_SVG_ID) {
       .text(function(d,i) { return keys[i];})
       .attr("height", 10)
       .attr("width", 10)
-      .attr("x", function(d,i) { return (i*130 - MARGIN) })
-      .attr("y", (MARGIN))
+      .attr("x", function(d,i) { return (i*130 - MARGIN + xOff) })
+      .attr("y", (MARGIN + yOff))
       .attr("fill", function(d,i) { return keyCol[i]; });
 
     svg1.selectAll("text")
@@ -219,8 +223,8 @@ function add_gen_legend(svgId = C1_SVG_ID) {
       .append("text")
       .attr("class", "legGenText")
       .attr("x", function(d,i) {
-           return (15 + i*130 - MARGIN) })
-      .attr("y", MARGIN+10)
+           return (15 + i*130 - MARGIN + xOff) })
+      .attr("y", MARGIN+10 + yOff)
       .attr("alignment-baseline", "left")
       .style("font-size", LEG_FONT_SZE)
       .style("fill", "black")

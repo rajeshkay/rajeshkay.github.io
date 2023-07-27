@@ -51,6 +51,7 @@ function plot_chart(data) {
     }
 
     add_legend();
+    add_gen_legend(C2_SVG_ID, 300, 450);
 }
 
 async function chart2() {
