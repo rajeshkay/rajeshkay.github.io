@@ -268,7 +268,7 @@ function add_legend(){
 
 function legend_click() {
 
-    if (this.textContent == "Clear BMI Selection") {
+    if (this.textContent.substring(0,15) == "Clear Selection") {
         slxnFlag &= RST_BMI;
         rem_clear();
     }
