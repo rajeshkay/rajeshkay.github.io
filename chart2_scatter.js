@@ -348,6 +348,8 @@ function filter_data() {
 }
 
 function add_clear() {
+   
+    d3.select(C2_SVG_ID).select(".bmiClrText").remove();
     var textObj = d3.select(C2_SVG_ID).append("foreignObject")
          .attr("width", 150)
          .attr("height",100)
