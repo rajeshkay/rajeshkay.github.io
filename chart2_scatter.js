@@ -273,23 +273,23 @@ function legend_click() {
         rem_clear();
     }
     else {
-        add_clear()
-    if (this.textContent == "Obese") {
-        slxnFlag &= RST_BMI;
-        slxnFlag |= SL_OBESE;
-    }
-    else if (this.textContent == "Over Weight") {
-        slxnFlag &= RST_BMI;
-        slxnFlag |= SL_OVWT;
-    }
-    else if (this.textContent == "Healthy Weight") {
-        slxnFlag &= RST_BMI;
-        slxnFlag |= SL_CWT;
-    }
-    else {
-        slxnFlag &= RST_BMI;
-        slxnFlag |= SL_UWT;
-    }
+        add_clear(this.textContent)
+        if (this.textContent == "Obese") {
+            slxnFlag &= RST_BMI;
+            slxnFlag |= SL_OBESE;
+        }
+        else if (this.textContent == "Over Weight") {
+            slxnFlag &= RST_BMI;
+            slxnFlag |= SL_OVWT;
+        }
+        else if (this.textContent == "Healthy Weight") {
+            slxnFlag &= RST_BMI;
+            slxnFlag |= SL_CWT;
+        }
+        else {
+            slxnFlag &= RST_BMI;
+            slxnFlag |= SL_UWT;
+        }
     }
 
     filter_data();
@@ -344,17 +344,18 @@ function filter_data() {
     }
 }
 
-function add_clear() {
+function add_clear(text="") {
    
     d3.select(C2_SVG_ID).select(".bmiClrText").remove();
+
     var textObj = d3.select(C2_SVG_ID).append("foreignObject")
-         .attr("width", 150)
+         .attr("width", 200)
          .attr("height",100)
          .attr("x", 5)
          .attr("y", 35);
 
-    var textBox = textObj.append("xhtml:h4")
-        .text("Clear BMI Selection")
+    textObj.append("xhtml:h4")
+        .text(("Clear Selection: " + text))
         .attr("class", "bmiClrText")
         .style("font-size", LEG_FONT_SZE)
         .style("font-weight", "bold")
