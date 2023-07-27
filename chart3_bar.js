@@ -518,7 +518,9 @@ function draw_factors() {
       .style("fill", LEG_FONT_COL)
       .style("text-decoration", "underline")
       .text(d => d)
-      .on("click", feature_click);
+      .on("click", feature_click)
+      .on("mouseover", change_cursor)
+      .on("mouseleave", change_cursor);
 
     var textObj = d3.select(C3_SVG_ID).append("foreignObject")
          .attr("width", 120)

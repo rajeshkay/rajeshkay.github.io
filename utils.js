@@ -122,6 +122,14 @@ function gender_col(gender) {
 	return GEN_COL_MALE;
 }
 
+
+function change_cursor() {
+    if (event.type = "mouseover")
+       this.style.cursor = "pointer";
+    else
+       this.style.cursor = "default";
+}
+
 init_svg(C1_DIV_ID, C1_SVG_ID, C1_SVG_H3_ID);
 init_svg(C2_DIV_ID, C2_SVG_ID, C2_SVG_H3_ID);
 init_svg(C3_DIV_ID, C3_SVG_ID, C3_SVG_H3_ID);

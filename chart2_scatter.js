@@ -187,11 +187,12 @@ function add_button(buttonText, onclick, x, y, col) {
         .style("font-size", "10px")
         .style("font-weight", "bold")
         .style("color", butnTxtCol)
-        .on("click", onclick);
+        .on("click", onclick)
+        .on("mouseover", change_cursor)
+        .on("mouseleave", change_cursor);
 
     d3.select(".genClkText").remove();
 
-//    var textObj = d3.select(C2_SVG_ID).append("g").append("foreignObject")
     var textObj = svg1.append("foreignObject")
          .attr("width", 100)
          .attr("height",120)
@@ -224,7 +225,9 @@ function add_legend(){
       .attr("cx", (d, i) => (30 + i * 130))
       .attr("r", d => d)
       .attr("fill", "steelblue")
-      .on("click", legend_click);
+      .on("click", legend_click)
+      .on("mouseover", change_cursor)
+      .on("mouseleave", change_cursor);
 
     sizeLegend.selectAll("text")
       .data(bmiText)
@@ -245,28 +248,22 @@ function add_legend(){
       .style("fill", LEG_FONT_COL)
       .style("text-decoration", "underline")
       .text(d => d)
-      .on("click", legend_click);
+      .on("click", legend_click)
+      .on("mouseover", change_cursor)
+      .on("mouseleave", change_cursor);
 
     var textObj = d3.select(C2_SVG_ID).append("foreignObject")
          .attr("width", 120)
          .attr("height",40)
          .attr("x", 5)
          .attr("y", 0);
-/*
-      var textObj = sizeLegend.append("foreignObject")
-         .attr("width", 120)
-         .attr("height",40)
-         .attr("x", -2*MARGIN)
-         .attr("y", -20);
-*/
 
     var textBox = textObj.append("xhtml:h4")
         .text("Click BMI to Filter")
         .attr("class", "bmiClkText")
         .style("font-weight", "bold")
         .style("font-size", LEG_FONT_SZE)
-        .style("color", CLK_HERE_COL)
-        .on("click", legend_click);
+        .style("color", CLK_HERE_COL);
 }
 
 function legend_click() {
@@ -362,10 +359,11 @@ function add_clear() {
         .style("font-size", LEG_FONT_SZE)
         .style("font-weight", "bold")
         .style("color", clrTxtCol)
-        .on("click", legend_click);
+        .on("click", legend_click)
+        .on("mouseover", change_cursor)
+        .on("mouseleave", change_cursor);
 }
 
 function rem_clear() {
     d3.selectAll(".bmiClrText").remove();
 }
-
