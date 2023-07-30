@@ -522,11 +522,16 @@ function draw_factors() {
       .on("mouseover", change_cursor)
       .on("mouseleave", change_cursor);
 
+    var yL = -2;
+    if (get_browser() == "Safari") {
+        yL = yL + 20;
+    }
+
     var textObj = d3.select(C3_SVG_ID).append("foreignObject")
          .attr("width", 120)
          .attr("height", 50)
          .attr("x", 5)
-         .attr("y", -2);
+         .attr("y", yL);
 
     var textBox = textObj.append("xhtml:h4")
         .text("Select a Factor: ")
