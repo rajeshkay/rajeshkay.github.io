@@ -130,6 +130,24 @@ function change_cursor() {
        this.style.cursor = "default";
 }
 
+function get_browser() {
+    
+    const userAgent = navigator.userAgent;
+        
+    if (userAgent.indexOf("Chrome") !== -1) {
+      return "Chrome";
+    } else if (userAgent.indexOf("Firefox") !== -1) {
+      return "Firefox";
+    } else if (userAgent.indexOf("Safari") !== -1) {
+      return "Safari";
+    } else if (userAgent.indexOf("Edge") !== -1) {
+      return "Edge";
+    } else if (userAgent.indexOf("MSIE") !== -1 || userAgent.indexOf("Trident") !== -1) {
+      return "Internet Explorer";
+    }
+}
+
+
 init_svg(C1_DIV_ID, C1_SVG_ID, C1_SVG_H3_ID);
 init_svg(C2_DIV_ID, C2_SVG_ID, C2_SVG_H3_ID);
 init_svg(C3_DIV_ID, C3_SVG_ID, C3_SVG_H3_ID);

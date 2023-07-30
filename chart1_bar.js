@@ -240,11 +240,17 @@ function add_annotation(scaleX, scaleY, svg= C1_SVG_ID) {
 
     var destX = 120; //230
     var destY = 200; //120
+
+    var yL = scaleY(41);
+    if (get_browser() == "Safari") {
+        yL = yL + 15;
+    }
+
     var textObj = svg.append("foreignObject")
          .attr("width", 150)
          .attr("height",200)
          .attr("x", scaleX("30-40")+ (3*BAR_SPACE))
-         .attr("y", scaleY(41));
+         .attr("y", yL);
                 
     textBox = textObj.append("xhtml:h4")
         .text("Females appears more vulnerable in these age groups.")
